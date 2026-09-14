@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#1E2022"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#FFD000" stroke-opacity="0.15" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <rect x="120" y="140" width="560" height="320" stroke="#FFD000" stroke-opacity="0.5" stroke-width="2" fill="none"/>
+  <text x="400" y="300" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="28" font-weight="700">AutoCAD DWG</text>
+  <text x="400" y="340" text-anchor="middle" fill="#B8B8B8" font-family="Arial, sans-serif" font-size="16">LIC 3rd Floor  source drawing file</text>
+  <text x="400" y="380" text-anchor="middle" fill="#FFD000" font-family="Arial, sans-serif" font-size="14">Download available in gallery</text>
+</svg>
