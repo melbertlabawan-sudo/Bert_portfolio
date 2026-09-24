@@ -11,9 +11,6 @@ export function Footer() {
         <div>
           <p className="text-lg font-bold text-text-primary">{personalInfo.name}</p>
           <p className="mt-1 text-sm text-accent">{personalInfo.title}</p>
-          <p className="mt-2 text-sm text-text-secondary">
-            Career Portfolio • Code {personalInfo.portfolioCode}
-          </p>
         </div>
 
         <div>

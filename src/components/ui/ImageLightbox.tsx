@@ -9,6 +9,7 @@ import {
   ZoomOut,
 } from "lucide-react"
 import { useCallback, useEffect, useState } from "react"
+import { isPdfUrl } from "../../lib/isPdfUrl"
 
 export interface LightboxItem {
   id: string
@@ -73,6 +74,8 @@ export function ImageLightbox({
 
   if (!item) return null
 
+  const pdfPreview = isPdfUrl(item.image)
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -107,22 +110,26 @@ export function ImageLightbox({
                 )}
               </div>
               <div className="flex shrink-0 items-center gap-1">
-                <button
-                  type="button"
-                  aria-label="Zoom out"
-                  className="rounded-lg p-2 text-text-secondary transition hover:bg-white/5 hover:text-accent"
-                  onClick={() => setZoom((value) => Math.max(1, value - 0.25))}
-                >
-                  <ZoomOut size={18} />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Zoom in"
-                  className="rounded-lg p-2 text-text-secondary transition hover:bg-white/5 hover:text-accent"
-                  onClick={() => setZoom((value) => Math.min(3, value + 0.25))}
-                >
-                  <ZoomIn size={18} />
-                </button>
+                {!pdfPreview && (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Zoom out"
+                      className="rounded-lg p-2 text-text-secondary transition hover:bg-white/5 hover:text-accent"
+                      onClick={() => setZoom((value) => Math.max(1, value - 0.25))}
+                    >
+                      <ZoomOut size={18} />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Zoom in"
+                      className="rounded-lg p-2 text-text-secondary transition hover:bg-white/5 hover:text-accent"
+                      onClick={() => setZoom((value) => Math.min(3, value + 0.25))}
+                    >
+                      <ZoomIn size={18} />
+                    </button>
+                  </>
+                )}
                 <button
                   type="button"
                   aria-label={fullscreen ? "Exit fullscreen" : "Enter fullscreen"}
@@ -143,16 +150,24 @@ export function ImageLightbox({
             </div>
 
             <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-auto bg-black/40 p-4">
-              <img
-                src={item.image}
-                alt={item.imageAlt}
-                loading="lazy"
-                className="max-h-full max-w-full object-contain transition-transform duration-200"
-                style={{ transform: `scale(${zoom})` }}
-                onError={(event) => {
-                  event.currentTarget.src = "/images/placeholder.svg"
-                }}
-              />
+              {pdfPreview ? (
+                <iframe
+                  src={`${item.image}#view=FitH`}
+                  title={item.imageAlt}
+                  className="h-full min-h-[50vh] w-full max-w-4xl border-0 bg-white"
+                />
+              ) : (
+                <img
+                  src={item.image}
+                  alt={item.imageAlt}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain transition-transform duration-200"
+                  style={{ transform: `scale(${zoom})` }}
+                  onError={(event) => {
+                    event.currentTarget.src = "/images/placeholder.svg"
+                  }}
+                />
+              )}
               {items.length > 1 && (
                 <>
                   <button
@@ -197,7 +212,11 @@ export function ImageLightbox({
                 {item.assetUrl && (
                   <a
                     href={item.assetUrl}
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    {...(item.assetUrl.endsWith(".pdf")
+                      ? {}
+                      : { download: true })}
                     className="mt-3 inline-flex rounded-lg border border-accent/40 px-3 py-2 text-xs font-semibold text-accent transition hover:bg-accent/10"
                   >
                     {item.assetLabel ?? "Download original file"}

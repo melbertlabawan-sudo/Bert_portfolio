@@ -46,23 +46,10 @@ export interface Certificate {
   organization: string
   date: string
   description: string
+  /** Full certificate file (PDF or image) */
   image: string
-}
-
-export interface ProfessionalDevelopment {
-  theme: string
-  topics: string[]
-}
-
-export interface CareerGoal {
-  id: string
-  title: string
-  summary: string
-  details: string
-}
-
-export interface Highlight {
-  label: string
+  /** Thumbnail / lightbox preview image */
+  previewImage: string
 }
 
 export interface CareerInterest {
@@ -74,11 +61,9 @@ export interface CareerInterest {
 export const personalInfo = {
   name: "Melbert Q. Labawan",
   title: "Registered Electrical Engineer",
-  portfolioCode: "2284",
   tagline:
     "Technical Problem Solving • Database Management • SQL Programming",
   phone: "09524676358",
-  phoneAlt: "09354854932",
   email: "melbertlabawan@gmail.com",
   location: "Calinan, Davao City",
   resumeUrl: "/resume/labawan-portfolio.pdf",
@@ -94,7 +79,6 @@ export const navLinks: NavLink[] = [
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "certificates", label: "Certificates" },
-  { id: "career-goals", label: "Career Goals" },
   { id: "contact", label: "Contact" },
 ]
 
@@ -136,10 +120,10 @@ export const about = {
 }
 
 export const stats: Stat[] = [
-  { label: "Professional Registration", value: "REE" },
-  { label: "DOST-SEI Scholar", value: "2020" },
-  { label: "Engineering Education", value: "BSEE" },
-  { label: "Utility Experience", value: "DLPC" },
+  { label: "Registered Electrical Engineer", value: "REE" },
+  { label: "2020 to 2025", value: "DOST-SEI Scholar" },
+  { label: "Bachelor of Science in Electrical Engineering", value: "BSEE" },
+  { label: "IIEE ANNUAL NSCON 2024", value: "National Quizzer" },
 ]
 
 export const education: Education[] = [
@@ -161,14 +145,14 @@ export const workExperience: Experience[] = [
   {
     id: "exp-1",
     period: "Feb 2025 – Present",
-    role: "Project Staff — Genius SME",
+    role: "GENIUS - Subject Matter Expert",
     organization: "Davao Light and Power Co.",
     description:
       "Supporting engineering and technology initiatives at Davao Light and Power Company.",
     responsibilities: [
       "Assisted in development and testing of streetlight web and mobile applications by fixing frontend bugs, performing system testing, and supporting SQL database operations.",
       "Coordinated with stakeholders and third-party web development teams to support project implementation and facilitate communication.",
-      "Helped in database extractions for an AI system to account for all solar systems in Davao City.",
+      "Helped in database extractions for support in Davao Light North, optimizing data retrieval for the technical support.",
     ],
     type: "work",
   },
@@ -193,6 +177,7 @@ export const workExposure: Experience[] = [
 export const resumeSections = {
   licenses: [
     "Registered Electrical Engineer (August 2025)",
+    "National Quizzer (National Math Wizard - IIEE ANNUAL NSCON 2024)",
     "DOST-SEI Scholarship Awardee (2020–2025)",
     "Intern — Davao Light and Power Company (July 2024)",
     "Basic Occupational Safety and Health Seminar (2023)",
@@ -313,7 +298,8 @@ export const certificates: Certificate[] = [
     organization: "Professional Regulation Commission",
     date: "August 2025",
     description: "Professional license as Registered Electrical Engineer.",
-    image: "/images/certificates/cert-1.jpg",
+    image: "/images/certificates/certificate-of-passing-prc.pdf",
+    previewImage: "/images/certificates/registered-electrical-engineer.png",
   },
   {
     id: "cert-2",
@@ -321,7 +307,8 @@ export const certificates: Certificate[] = [
     organization: "Department of Science and Technology — SEI",
     date: "2020–2025",
     description: "Science Education Institute scholarship for engineering studies.",
-    image: "/images/certificates/cert-2.jpg",
+    image: "/images/certificates/scholarship.jpg",
+    previewImage: "/images/certificates/scholarship-preview.jpg",
   },
   {
     id: "cert-3",
@@ -329,7 +316,8 @@ export const certificates: Certificate[] = [
     organization: "[Organization from portfolio]",
     date: "2023",
     description: "Training on occupational safety and health practices.",
-    image: "/images/certificates/cert-3.jpg",
+    image: "/images/certificates/labawan-bosh-cert.pdf",
+    previewImage: "/images/certificates/basic-occupational-safety-and-health-seminar.png",
   },
   {
     id: "cert-4",
@@ -337,90 +325,7 @@ export const certificates: Certificate[] = [
     organization: "Davao Light and Power Co.",
     date: "July 2024",
     description: "Engineering internship completion at Davao Light and Power Company.",
-    image: "/images/certificates/cert-4.jpg",
+    image: "/images/certificates/ojt-certificate.pdf",
+    previewImage: "/images/certificates/on-the-job-training.png",
   },
-]
-
-export const professionalDevelopment: ProfessionalDevelopment[] = [
-  {
-    theme: "Power Systems & Utility",
-    topics: ["Davao Light and Power Co. — OJT and project work"],
-  },
-  {
-    theme: "Engineering Technology",
-    topics: ["Streetlight web/mobile application development and testing"],
-  },
-  {
-    theme: "Data & Automation",
-    topics: ["SQL database operations", "Solar systems AI database project"],
-  },
-  {
-    theme: "Professional Development",
-    topics: [
-      "Basic Occupational Safety and Health (2023)",
-      "Continuous learning in engineering and technology",
-    ],
-  },
-]
-
-export const careerGoals: CareerGoal[] = [
-  {
-    id: "career-advancement",
-    title: "Career Advancement",
-    summary:
-      "Advance through engineering education, certifications, experience, and specialization.",
-    details:
-      "Goals include completing a Bachelor's degree in Electrical Engineering, developing expertise in electrical system design and electrical distribution, obtaining EIM (Electrical Installation and Maintenance) certification, gaining meaningful work experience, pursuing a Master's degree in Electrical Engineering, and developing specialization in energy.",
-  },
-  {
-    id: "financial-stability",
-    title: "Financial Stability",
-    summary: "Build long-term financial security through professional growth.",
-    details:
-      "[Update with career goal details from portfolio PDF — financial stability objectives.]",
-  },
-  {
-    id: "health-wellness",
-    title: "Health & Wellness",
-    summary: "Maintain balance and well-being alongside professional development.",
-    details:
-      "[Update with career goal details from portfolio PDF — health and wellness objectives.]",
-  },
-  {
-    id: "added-skills",
-    title: "Added Skills",
-    summary: "Expand engineering capabilities through technology and programming.",
-    details:
-      "Focus on developing added skills in Python, computer programming, web development, problem solving, and automation — combining electrical engineering fundamentals with technology-driven solutions.",
-  },
-  {
-    id: "personal-satisfaction",
-    title: "Personal Satisfaction",
-    summary: "Achieve fulfillment through meaningful engineering work and growth.",
-    details:
-      "[Update with career goal details from portfolio PDF — personal satisfaction objectives.]",
-  },
-  {
-    id: "community-engagement",
-    title: "Community Engagement",
-    summary: "Contribute positively to community and professional networks.",
-    details:
-      "[Update with career goal details from portfolio PDF — community engagement objectives.]",
-  },
-]
-
-export const careerRoadmap = [
-  "Education",
-  "Professional Experience",
-  "Technical Certifications",
-  "Specialization",
-  "Advanced Education",
-]
-
-export const highlights: Highlight[] = [
-  { label: "Registered Electrical Engineer" },
-  { label: "DOST-SEI Scholar" },
-  { label: "Davao Light & Power Co." },
-  { label: "Engineering + Technology" },
-  { label: "Electrical Design" },
 ]

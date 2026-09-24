@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { certificates, professionalDevelopment } from "../../data/portfolio"
+import { certificates } from "../../data/portfolio"
+import { isPdfUrl } from "../../lib/isPdfUrl"
 import { ImageLightbox, type LightboxItem } from "../ui/ImageLightbox"
 import { SectionHeading } from "../ui/SectionHeading"
 
@@ -11,8 +12,11 @@ export function Certificates() {
     id: cert.id,
     title: cert.title,
     description: `${cert.organization} • ${cert.date}\n${cert.description}`,
-    image: cert.image,
+    image: cert.previewImage,
     imageAlt: `Certificate: ${cert.title}`,
+    ...(isPdfUrl(cert.image)
+      ? { assetUrl: cert.image, assetLabel: "Open PDF in new tab" }
+      : {}),
   }))
 
   return (
@@ -23,28 +27,6 @@ export function Certificates() {
           title="Certificates & Professional Development"
           description="Technical training, webinars, and continuous learning documented in the career portfolio."
         />
-
-        <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {professionalDevelopment.map((item, index) => (
-            <motion.div
-              key={item.theme}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.06 }}
-              className="rounded-xl border border-white/10 bg-background p-4"
-            >
-              <h3 className="text-sm font-semibold text-accent">{item.theme}</h3>
-              <ul className="mt-2 space-y-1">
-                {item.topics.map((topic) => (
-                  <li key={topic} className="text-xs text-text-secondary">
-                    • {topic}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {certificates.map((cert, index) => (
@@ -60,7 +42,7 @@ export function Certificates() {
             >
               <div className="aspect-[3/4] overflow-hidden bg-black/20">
                 <img
-                  src={cert.image}
+                  src={cert.previewImage}
                   alt={`Certificate: ${cert.title}`}
                   loading="lazy"
                   className="h-full w-full object-contain p-2 transition duration-300 group-hover:scale-[1.02]"

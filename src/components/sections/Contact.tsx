@@ -28,15 +28,6 @@ export function Contact() {
               <Phone size={18} className="text-accent" />
               {personalInfo.phone}
             </a>
-            {"phoneAlt" in personalInfo && personalInfo.phoneAlt && (
-              <a
-                href={`tel:${personalInfo.phoneAlt}`}
-                className="flex items-center justify-center gap-2 text-base text-text-secondary transition hover:text-accent"
-              >
-                <Phone size={16} className="text-accent/70" />
-                {personalInfo.phoneAlt}
-              </a>
-            )}
             <a
               href={`mailto:${personalInfo.email}`}
               className="flex items-center justify-center gap-2 text-lg text-text-primary transition hover:text-accent"

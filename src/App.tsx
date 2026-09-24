@@ -1,7 +1,6 @@
 import { Footer } from "./components/layout/Footer"
 import { Navbar } from "./components/layout/Navbar"
 import { About } from "./components/sections/About"
-import { CareerGoals } from "./components/sections/CareerGoals"
 import { Certificates } from "./components/sections/Certificates"
 import { Contact } from "./components/sections/Contact"
 import { ExperienceTimeline } from "./components/sections/ExperienceTimeline"
@@ -38,7 +37,6 @@ export default function App() {
           items={technicalDrawings}
         />
         <Certificates />
-        <CareerGoals />
         <Contact />
       </main>
       <Footer />
