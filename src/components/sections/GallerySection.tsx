@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { useMemo, useState } from "react"
 import type { GalleryItem } from "../../data/portfolio"
 import { ImageLightbox, type LightboxItem } from "../ui/ImageLightbox"
+import { ProtectedImage } from "../ui/ProtectedMedia"
 import { SectionHeading } from "../ui/SectionHeading"
 
 interface GallerySectionProps {
@@ -33,8 +34,6 @@ function buildLightboxItems(items: GalleryItem[]): LightboxItem[] {
       imageAlt: item.imageAlt,
       skills: item.skills,
       category: item.category,
-      assetUrl: item.assetUrl,
-      assetLabel: item.assetLabel,
     }))
   })
 }
@@ -77,11 +76,12 @@ export function GallerySection({
             className="group overflow-hidden rounded-xl border border-white/10 bg-background-alt text-left transition hover:border-accent/40"
           >
             <div className="aspect-[4/3] overflow-hidden bg-black/30">
-              <img
+              <ProtectedImage
                 src={item.image}
                 alt={item.imageAlt}
                 loading="lazy"
-                className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                className="h-full w-full transition duration-300 group-hover:scale-105"
+                imgClassName="h-full w-full object-cover"
                 onError={(event) => {
                   event.currentTarget.src = `/images/placeholder.svg?type=${id}&n=${index + 1}`
                 }}

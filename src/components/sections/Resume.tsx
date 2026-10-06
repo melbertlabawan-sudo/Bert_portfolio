@@ -1,9 +1,7 @@
 import { motion } from "framer-motion"
 import type { ReactNode } from "react"
-import { Download } from "lucide-react"
 import {
   education,
-  personalInfo,
   resumeSections,
   skillItems,
   workExperience,
@@ -38,20 +36,12 @@ export function Resume() {
 
   return (
     <section id="resume" className="section-container py-20 md:py-28">
-      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+      <div className="mb-8">
         <SectionHeading
           label="Resume"
           title="Online Resume"
           description="Education, experience, skills, and professional credentials."
         />
-        <a
-          href={personalInfo.resumeUrl}
-          download
-          className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-muted"
-        >
-          <Download size={16} />
-          Download Resume
-        </a>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">

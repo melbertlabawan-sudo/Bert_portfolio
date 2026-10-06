@@ -1,9 +1,13 @@
 import { motion } from "framer-motion"
-import { Download, Mail, Phone } from "lucide-react"
+import { FileText, Mail, Phone } from "lucide-react"
 import { personalInfo } from "../../data/portfolio"
 import { SectionHeading } from "../ui/SectionHeading"
 
 export function Contact() {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <section id="contact" className="border-t border-white/5 bg-background-alt/60 py-20 md:py-28">
       <div className="section-container">
@@ -52,14 +56,14 @@ export function Contact() {
               <Phone size={16} />
               Call Me
             </a>
-            <a
-              href={personalInfo.resumeUrl}
-              download
+            <button
+              type="button"
+              onClick={() => scrollTo("resume")}
               className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-5 py-3 text-sm font-semibold text-text-primary transition hover:border-accent/40 hover:text-accent"
             >
-              <Download size={16} />
-              Download Resume
-            </a>
+              <FileText size={16} />
+              View Resume
+            </button>
           </div>
         </motion.div>
       </div>

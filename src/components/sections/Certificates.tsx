@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { certificates } from "../../data/portfolio"
-import { isPdfUrl } from "../../lib/isPdfUrl"
 import { ImageLightbox, type LightboxItem } from "../ui/ImageLightbox"
+import { ProtectedImage } from "../ui/ProtectedMedia"
 import { SectionHeading } from "../ui/SectionHeading"
 
 export function Certificates() {
@@ -14,9 +14,6 @@ export function Certificates() {
     description: `${cert.organization} • ${cert.date}\n${cert.description}`,
     image: cert.previewImage,
     imageAlt: `Certificate: ${cert.title}`,
-    ...(isPdfUrl(cert.image)
-      ? { assetUrl: cert.image, assetLabel: "Open PDF in new tab" }
-      : {}),
   }))
 
   return (
@@ -41,11 +38,12 @@ export function Certificates() {
               className="group overflow-hidden rounded-xl border border-white/10 bg-background text-left transition hover:border-accent/40"
             >
               <div className="aspect-[3/4] overflow-hidden bg-black/20">
-                <img
+                <ProtectedImage
                   src={cert.previewImage}
                   alt={`Certificate: ${cert.title}`}
                   loading="lazy"
-                  className="h-full w-full object-contain p-2 transition duration-300 group-hover:scale-[1.02]"
+                  className="h-full w-full p-2 transition duration-300 group-hover:scale-[1.02]"
+                  imgClassName="h-full w-full object-contain"
                   onError={(event) => {
                     event.currentTarget.src = `/images/placeholder.svg?type=cert&n=${index + 1}`
                   }}

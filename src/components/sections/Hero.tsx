@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Download, Mail, User } from "lucide-react"
+import { FileText, Mail, User } from "lucide-react"
 import { personalInfo } from "../../data/portfolio"
 import { EngineeringBackground } from "../ui/EngineeringBackground"
 
@@ -42,14 +42,14 @@ export function Hero() {
             >
               View My Portfolio
             </button>
-            <a
-              href={personalInfo.resumeUrl}
-              download
+            <button
+              type="button"
+              onClick={() => scrollTo("resume")}
               className="inline-flex items-center gap-2 rounded-lg border border-accent/40 px-5 py-3 text-sm font-semibold text-accent transition hover:border-accent hover:bg-accent/10"
             >
-              <Download size={16} />
-              Download Resume
-            </a>
+              <FileText size={16} />
+              View Resume
+            </button>
             <button
               type="button"
               onClick={() => scrollTo("contact")}

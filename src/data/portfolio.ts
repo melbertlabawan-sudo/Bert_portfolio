@@ -35,9 +35,6 @@ export interface GalleryItem {
   imageAlt: string
   /** Additional images for the same project (e.g. multiple photos in lightbox) */
   galleryImages?: string[]
-  /** Original file download (e.g. DWG, PDF) */
-  assetUrl?: string
-  assetLabel?: string
 }
 
 export interface Certificate {
@@ -46,9 +43,6 @@ export interface Certificate {
   organization: string
   date: string
   description: string
-  /** Full certificate file (PDF or image) */
-  image: string
-  /** Thumbnail / lightbox preview image */
   previewImage: string
 }
 
@@ -66,7 +60,6 @@ export const personalInfo = {
   phone: "09524676358",
   email: "melbertlabawan@gmail.com",
   location: "Calinan, Davao City",
-  resumeUrl: "/resume/labawan-portfolio.pdf",
   profileImage: "/images/profile/profile.jpg",
   heroIntro:
     "Registered Electrical Engineer and DOST Scholar with strong analytical and problem-solving skills. Experienced in system testing, basic SQL operations, frontend bug fixing, and coordinating with stakeholders and third-party development teams. With a passion for learning and contributing to innovative engineering and technology solutions.",
@@ -262,8 +255,6 @@ export const technicalDrawings: GalleryItem[] = [
     skills: ["AutoCAD", "Electrical Design and Estimate", "Planswift"],
     image: "/images/technical-drawings/lic-3rd-floor-power-layout.png",
     imageAlt: "LIC 3rd Floor electrical power layout drawing",
-    assetUrl: "/technical-drawings/ESPANOL-BERZA-LABAWAN_LIC-3RD-FLOOR_Power Layout.pdf",
-    assetLabel: "Download Power Layout PDF",
   },
   {
     id: "lic-3rd-floor-report",
@@ -274,8 +265,6 @@ export const technicalDrawings: GalleryItem[] = [
     skills: ["Electrical Design and Estimate", "Engineering Documentation"],
     image: "/images/technical-drawings/lic-3rd-floor-report.png",
     imageAlt: "LIC 3rd Floor project report cover and summary page",
-    assetUrl: "/technical-drawings/ESPANOL-BERZA-LABAWAN_LIC-3RD-FLOOR_Report.pdf",
-    assetLabel: "Download Project Report PDF",
   },
   {
     id: "lic-3rd-floor-autocad",
@@ -286,8 +275,6 @@ export const technicalDrawings: GalleryItem[] = [
     skills: ["AutoCAD", "Electrical Design and Estimate"],
     image: "/images/technical-drawings/lic-3rd-floor-autocad-preview.svg",
     imageAlt: "AutoCAD DWG drawing files for LIC 3rd Floor project",
-    assetUrl: "/technical-drawings/lic-3rd-floor-autocad.dwg",
-    assetLabel: "Download AutoCAD DWG",
   },
 ]
 
@@ -298,7 +285,6 @@ export const certificates: Certificate[] = [
     organization: "Professional Regulation Commission",
     date: "August 2025",
     description: "Professional license as Registered Electrical Engineer.",
-    image: "/images/certificates/certificate-of-passing-prc.pdf",
     previewImage: "/images/certificates/registered-electrical-engineer.png",
   },
   {
@@ -307,7 +293,6 @@ export const certificates: Certificate[] = [
     organization: "Department of Science and Technology — SEI",
     date: "2020–2025",
     description: "Science Education Institute scholarship for engineering studies.",
-    image: "/images/certificates/scholarship.jpg",
     previewImage: "/images/certificates/scholarship-preview.jpg",
   },
   {
@@ -316,7 +301,6 @@ export const certificates: Certificate[] = [
     organization: "[Organization from portfolio]",
     date: "2023",
     description: "Training on occupational safety and health practices.",
-    image: "/images/certificates/labawan-bosh-cert.pdf",
     previewImage: "/images/certificates/basic-occupational-safety-and-health-seminar.png",
   },
   {
@@ -325,7 +309,6 @@ export const certificates: Certificate[] = [
     organization: "Davao Light and Power Co.",
     date: "July 2024",
     description: "Engineering internship completion at Davao Light and Power Company.",
-    image: "/images/certificates/ojt-certificate.pdf",
     previewImage: "/images/certificates/on-the-job-training.png",
   },
 ]
